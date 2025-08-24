@@ -1,0 +1,60 @@
+<script setup>
+import { computed, onMounted, ref } from 'vue'
+import {useRoute} from 'vue-router'
+import { useArticlesStore } from '@/stores/articles';
+
+const route = useRoute()
+const articleStore = useArticlesStore()
+const articleId = computed(() => Number(route.params.id))
+const article = computed(() => articleStore.articleById(articleId.value))
+
+//fetch article
+onMounted(() => { 
+  const id = Number(useRoute().params.id)
+  console.log(id)
+  article.value = articleStore.articleById(id)
+})
+</script>
+
+<template>
+  <article class="card">
+    <header class ="card__header">
+      <section class="card__header__title">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.author }}</p>
+      </section>
+      <section class="card__header__data">
+        <p>{{ article.abstract }}</p>
+      </section>
+    </header>
+    <p>{{ article.date }}</p>
+    <img :src="article.img" />
+    <p>{{ article.content }}</p>
+  </article>
+</template>
+
+<style lang="scss" scoped>
+.card { 
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem auto;
+  border: 1px solid #ccc;
+  padding: 2rem;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    &__title {
+      display: flex;
+      gap: 1rem;
+    }
+    &__data {
+      display: flex;
+      justify-self: flex-end;
+      gap: 1rem;
+    }
+  }
+}
+</style>

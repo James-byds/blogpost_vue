@@ -38,7 +38,7 @@ export const useArticlesStore = defineStore('articles', {
       return state.articles
     },
     articleById: (state) => (id) => {
-      return state.articles.find((article) => article.id === id)
+      return state.articles.find((article) => article.id == id)
     },
   },
 })

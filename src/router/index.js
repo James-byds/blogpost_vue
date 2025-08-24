@@ -8,6 +8,11 @@ const router = createRouter({
       name: 'home',
       component: () => import('@/views/HomeView.vue'),
     },
+    {
+      path: '/article/:id',
+      name: 'article',
+      component: () => import('@/views/UniqueArticle.vue'),
+    },
   ],
 })
 

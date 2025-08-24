@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router';
 const props = defineProps({
   article: Object
 })
@@ -23,6 +24,7 @@ const props = defineProps({
     </header>
     <img :src="article.img" />
     <p>{{ article.content }}</p>
+    <RouterLink :to="{name: 'article', params: {id: article.id}}">Read more</RouterLink>
   </article>
 </template>
 
