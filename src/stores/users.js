@@ -16,8 +16,9 @@ export const useUsersStore = defineStore('users', {
     allUsers: (state) => {
       return state.users
     },
-    loginUser: (state) => (id) => {
-      return state.users.find((user) => user.id === id)
+    loginUser: (state) => (login, password) => {
+      console.log(login, password)
+      return state.users.find((user) => user.name === login && user.password === password)
     }
   }
 })
