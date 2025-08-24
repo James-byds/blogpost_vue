@@ -31,6 +31,13 @@ onMounted(() => {
     <img :src="article.img" />
     <p>{{ article.content }}</p>
   </article>
+  <section class="card__comments">
+    <p>Comments</p>
+    <span v-for="comment in article.comments" :key="comment.id">
+      <p>{{ comment.author }} on {{ comment.date }} </p>
+       <p>{{ comment.content }} </p>
+    </span>
+  </section>
 </template>
 
 <style lang="scss" scoped>
