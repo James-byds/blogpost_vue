@@ -6,7 +6,7 @@ export const useArticlesStore = defineStore('articles', {
     articles: [
       {
         id: 1,
-        img: "https://dummyimage.com/200.png",
+        img: "http://unsplash.it/350/200?random",
         title: 'Article 1',
         author: 'James Smith',
         abstract: 'begun us simplest expect human treated arrange',
@@ -15,7 +15,7 @@ export const useArticlesStore = defineStore('articles', {
       },
       {
         id: 2,
-        img: "https://dummyimage.com/200.png",
+        img: "http://unsplash.it/400/200?random",
         title: 'Article 2',
         author: 'Dean Smith',
         abstract: 'trail major cave north facing goose folks told realize warm kitchen',
@@ -24,7 +24,7 @@ export const useArticlesStore = defineStore('articles', {
       },
       {
         id: 3,
-        img: "https://dummyimage.com/200.png",
+        img: "http://unsplash.it/500/200?random",
         title: 'Article 3',
         author: 'Jane Doe',
         abstract: 'strip talk too cattle planned choose broken first policeman',
