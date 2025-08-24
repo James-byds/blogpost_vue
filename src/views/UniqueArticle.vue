@@ -3,6 +3,10 @@ import { computed, onMounted, ref } from 'vue'
 import {useRoute} from 'vue-router'
 import { useArticlesStore } from '@/stores/articles';
 
+//components
+import GlobalFooter from '@/components/GlobalFooter.vue'
+import GlobalHeader from '@/components/GlobalHeader.vue'
+
 const route = useRoute()
 const articleStore = useArticlesStore()
 const articleId = computed(() => Number(route.params.id))
@@ -17,6 +21,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <GlobalHeader />
   <article class="card">
     <header class ="card__header">
       <section class="card__header__title">
@@ -38,6 +43,7 @@ onMounted(() => {
        <p>{{ comment.content }} </p>
     </span>
   </section>
+  <GlobalFooter />
 </template>
 
 <style lang="scss" scoped>
