@@ -68,10 +68,13 @@ const handleComment = () => {
         <p class="comments__list__item__content">{{ comment.content }} </p>
       </span>
     </section>
-    <form action="" @submit.prevent="handleComment">
-      <label for="comment">Comment</label>
-      <input type="text" name="comment" v-model.lazy.trim="comment" />
-      <button type="submit">Submit</button>
+    <form action="" @submit.prevent="handleComment" class="comments__form">
+      <fieldset class="comments__form__fieldset">
+        <legend>Leave a comment</legend>
+       <label for="comment">Share a comment: </label>
+       <textarea name="comment" v-model.lazy.trim="comment" class="comments__form__fieldset__textarea"/>
+       <button type="submit" class="comments__form__fieldset__button">Submit</button>
+      </fieldset>
     </form>
   </section>
   <GlobalFooter />
@@ -122,6 +125,11 @@ const handleComment = () => {
     gap: .2rem;
     align-items: flex-start;
     &__item {
+      margin-block-start: 1rem;
+      border-left: 1px solid #ccc;
+      padding: .5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
       &__author {
         width: 100%;
         text-align: left;
@@ -141,12 +149,50 @@ const handleComment = () => {
         padding: .5rem;
         border-radius: .5rem;
         background-color: #ddd;
-        width: 100%;
         text-align: left;
         margin-block-start: .5rem;
         margin-inline-start: 2rem;
       }
     }
-  }
+  }//end of comments__list
+  &__form {
+    display: flex;
+    flex-direction: column;
+    &__fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      max-width: max-content;
+      min-width: 320px;
+      margin: 0 auto;
+      padding: 1.2rem;
+      &__textarea {
+        border: 1px solid #ccc;
+        padding: .5rem;
+        border-radius: .5rem;
+        background-color: #ddd;
+        max-width:max-content;
+        min-width: 320px;
+        min-height: 100px;
+        margin: 0 auto;
+      }
+      &__button {
+        border: 1px solid #ccc;
+        padding-inline: 1.5rem;
+        padding-block: 0.5rem;
+        cursor: pointer;
+        background-color: #02b;
+        color: #ccc;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+        align-self: flex-end;
+        max-width: fit-content;
+        &:hover {
+          background-color: #ccc;
+          color: #02b;
+        }
+      }
+    }
+  }//end of comments__form
 }
 </style>
