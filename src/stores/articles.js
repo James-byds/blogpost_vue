@@ -5,6 +5,7 @@ import AddArticle from '@/components/AddArticle.vue'
 
 export const useArticlesStore = defineStore('articles', {
   state: () => ({
+    //for comments, state is pending, approved or rejected
     articles: [
       {
         id: 1,
@@ -20,7 +21,8 @@ export const useArticlesStore = defineStore('articles', {
             id: 1,
             author: 'John Doe',
             content: 'This is a comment',
-            date: '12/1/2022'
+            date: '12/1/2022',
+            state: 'approved'
           }
         ]
       },
@@ -38,7 +40,8 @@ export const useArticlesStore = defineStore('articles', {
             id: 1,
             author: 'John Doe',
             content: 'This is a comment',
-            date: '12/1/2022'
+            date: '12/1/2022',
+            state: 'approved'
           }
         ]
       },
@@ -56,7 +59,8 @@ export const useArticlesStore = defineStore('articles', {
             id: 1,
             author: 'JSM',
             content: 'This is a comment',
-            date: '12/1/2022'
+            date: '12/1/2022',
+            state: 'approved'
           }
         ]
       },
