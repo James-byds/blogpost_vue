@@ -70,6 +70,7 @@ export const useArticlesStore = defineStore('articles', {
         date: '9/3/2081',
       },
     ],
+    lastId: 5 
   }),//end state
   getters: {
     allArticles: (state) => {
@@ -78,9 +79,6 @@ export const useArticlesStore = defineStore('articles', {
     articleById: (state) => (id) => {
       return state.articles.find((article) => article.id == id)
     },
-    getLastId: (state) => {
-      return state.articles[state.articles.length - 1].id
-    }
   },//end getters
   actions: {
     addArticle(newArticle) {

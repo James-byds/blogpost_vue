@@ -8,7 +8,7 @@ const articleStore = useArticlesStore()
 const userStore = useUsersStore()
 
 //refs
-const id= articleStore.getLastId()
+const id = ref(null)
 const title = ref(null)
 const abstract = ref(null)
 const content = ref(null)
@@ -16,7 +16,7 @@ const today = new Date().toLocaleDateString('fr')
 
 const handleSubmit = () => {
   const newArticle = {
-    id: id.value + 1,
+    id: articleStore.lastId++,
     title: title.value,
     abstract: abstract.value,
     content: content.value,
