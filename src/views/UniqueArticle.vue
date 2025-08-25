@@ -16,6 +16,7 @@ const userStore = useUsersStore()
 //article data
 const articleId = computed(() => Number(route.params.id))
 const article = computed(() => articleStore.articleById(articleId.value))
+const edit=ref(false)
 //author data
 const author = userStore.getAuthor(article.value.authorId)
 //comment data
@@ -44,24 +45,36 @@ const handleComment = () => {
           By
           <p>{{ author.lastname }} {{ author.firstname }}</p>
         </span>
-        <h2 class="card__header__intro__title">{{ article.title }}</h2>
+        <h2 class="card__header__intro__title" v-show="!edit">{{ article.title }}</h2>
+        <input v-show="edit" type="text" v-model="article.title" />
       </section>
       <section class="card__header__data">
         <span>
           Published on
-          <p>{{ article.date }}</p>
+          <p v-show="!edit">{{ article.date }}</p>
+          <input v-show="edit" type="date" v-model="article.date" />
         </span>
       </section>
       <div class="card__header__controls" v-if="userStore.session">
         <button class="card__header__controls__button"
         @click="articleStore.deleteArticle(articleId)">Delete article</button>
         <button class="card__header__controls__button"
-        @click.prevent="">Edit article</button>
+        @click.prevent="edit = !edit"
+        v-show="!edit">Edit article</button>
+        <!-- boutons de sauvegarde et annulation -->
+        <button class="card__header__controls__button"
+        @click.prevent="articleStore.updateArticle(article)"
+        v-show="edit">Save article</button>
+        <button class="card__header__controls__button"
+        @click.prevent="edit = !edit"
+        v-show="edit">Cancel</button>
       </div>
     </header>
-    <p>{{ article.abstract }}</p>
+    <p v-show="!edit">{{ article.abstract }}</p>
+    <input v-show="edit" type="text" v-model="article.abstract" />
     <img :src="article.banner" />
-    <p>{{ article.content }}</p>
+    <p v-show="!edit">{{ article.content }}</p>
+    <input v-show="edit" type="text" v-model="article.content" />
   </article>
   <!-- comments -->
   <section class="comments">
