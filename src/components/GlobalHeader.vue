@@ -48,7 +48,7 @@ const handleLogout = () => {
         <input class="globalH__login__input" type="password" placeholder="password" v-model.lazy.trim="password" />
         <p v-if="wrongLogin" class="error">Wrong login or password</p>
       </fieldset>
-      <button type="submit" class="globalH__login__button">Log in</button>
+      <button type="submit" class="globalH__login__button button">Log in</button>
     </form>
     <p v-else>
       Logged in as {{ userStore.currentUser.pseudo }}
