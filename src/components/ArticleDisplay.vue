@@ -27,7 +27,7 @@ const author = userStore.getAuthor(props.article.authorId)
         <p>{{ article.date }}</p>
       </section>
     </header>
-    <img :src="article.img" />
+    <img :src="article.thumbnail" />
     <p>{{ article.content }}</p>
     <RouterLink :to="{name: 'article', params: {id: article.id}}">Read more</RouterLink>
   </article>

@@ -33,7 +33,7 @@ const author = userStore.getAuthor(article.value.authorId)
       </section>
     </header>
     <p>{{ article.date }}</p>
-    <img :src="article.img" />
+    <img :src="article.banner" />
     <p>{{ article.content }}</p>
   </article>
   <section class="card__comments">

@@ -6,7 +6,8 @@ export const useArticlesStore = defineStore('articles', {
     articles: [
       {
         id: 1,
-        img: "http://unsplash.it/350/200?random",
+        thumbnail: "http://unsplash.it/350/200?random",
+        banner: "http://unsplash.it/800/200?random",
         title: 'Article 1',
         authorId: 1,
         abstract: 'begun us simplest expect human treated arrange',
@@ -23,7 +24,8 @@ export const useArticlesStore = defineStore('articles', {
       },
       {
         id: 2,
-        img: "http://unsplash.it/400/200?random",
+        thumbnail: "http://unsplash.it/350/200?random",
+        banner: "http://unsplash.it/800/200?random",
         title: 'Article 2',
         authorId: 1,
         abstract: 'trail major cave north facing goose folks told realize warm kitchen',
@@ -40,7 +42,8 @@ export const useArticlesStore = defineStore('articles', {
       },
       {
         id: 3,
-        img: "http://unsplash.it/500/200?random",
+        thumbnail: "http://unsplash.it/350/200?random",
+        banner: "http://unsplash.it/800/200?random",
         title: 'Article 3',
         authorId: 2,
         abstract: 'strip talk too cattle planned choose broken first policeman',
