@@ -65,6 +65,9 @@ const handleLogout = () => {
     justify-content: space-between;
     background-color: #ddd;
     &__title {
+      display: flex; 
+      justify-content: center;
+      align-items: center;
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
@@ -100,6 +103,7 @@ const handleLogout = () => {
         flex-direction: column;
         gap: 1rem;
         margin-block: 0.5rem;
+        padding: .5rem;
       }
       &__input {
         border: 1px solid #ccc;
