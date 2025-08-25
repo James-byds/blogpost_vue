@@ -86,6 +86,8 @@ const handleComment = () => {
         <p class="comments__list__item__author">{{ comment.author }} </p>
         <p class="comments__list__item__date">on {{ comment.date }} </p>
         <p class="comments__list__item__content">{{ comment.content }} </p>
+        <button class="comments__list__item__button" v-if="userStore.session"
+        @click="articleStore.deleteComment(articleId, comment.id)">Delete</button>
       </span>
     </section>
     <!-- form to add comments -->

@@ -97,6 +97,10 @@ export const useArticlesStore = defineStore('articles', {
         }
         return article
       })
+    },
+    deleteComment(articleId, commentId) {
+      const articleIndex = this.articles.findIndex((article) => article.id === articleId)
+      this.articles[articleIndex].comments = this.articles[articleIndex].comments.filter((comment) => comment.id !== commentId)
     }
   }
 })//end defineStore
