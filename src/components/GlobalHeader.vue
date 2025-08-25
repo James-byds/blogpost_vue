@@ -8,6 +8,8 @@ const userStore = useUsersStore()
 
 //refs
 const user = ref(null)
+const login = ref(null)
+const password = ref(null)
 const wrongLogin = ref(false);
 
 //methods 
@@ -42,8 +44,8 @@ const handleLogout = () => {
     <form class="globalH__login" v-if="!userStore.session" @submit.prevent="handleLogin">
       <fieldset class="globalH__login__fieldset">
         <legend>Log in</legend>
-        <input class="globalH__login__input" type="text" placeholder="Test" name="login" id="login" />
-        <input class="globalH__login__input" type="password" placeholder="test" name="password" id="password" />
+        <input class="globalH__login__input" type="text" placeholder="Test" v-model.lazy.trim="login"  />
+        <input class="globalH__login__input" type="password" placeholder="test" v-model.lazy.trim="password" />
         <p v-if="wrongLogin" class="error">Wrong login or password</p>
       </fieldset>
       <button type="submit" class="globalH__login__button">Log in</button>
