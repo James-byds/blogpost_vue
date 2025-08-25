@@ -83,6 +83,9 @@ export const useArticlesStore = defineStore('articles', {
     articleById: (state) => (id) => {
       return state.articles.find((article) => article.id == id)
     },
+    approvedComments: (state) => (id) => {
+      return state.articles.find((article) => article.id == id).comments.filter((comment) => comment.state === 'approved')
+    }
   },//end getters
   actions: {
     addArticle(newArticle) {

@@ -30,7 +30,8 @@ const handleComment = () => {
     id: article.value.comments.length + 1,
     author: commentor,
     date: new Date().toLocaleDateString('fr'),
-    content: comment.value
+    content: comment.value,
+    state: 'pending'
   }
   article.value.comments.push(newComment)
 }
@@ -82,12 +83,18 @@ const handleComment = () => {
     <p>Comments</p>
     <section class="comments__list">
       <span v-for="comment in article.comments" :key="comment.id"
-      class="comments__list__item">
+      class="comments__list__item" >
         <p class="comments__list__item__author">{{ comment.author }} </p>
         <p class="comments__list__item__date">on {{ comment.date }} </p>
         <p class="comments__list__item__content">{{ comment.content }} </p>
         <button class="comments__list__item__button" v-if="userStore.session"
         @click="articleStore.deleteComment(articleId, comment.id)">Delete</button>
+        <span class="comments__list__item__controls" v-if="userStore.session && comment.state === 'pending'">
+          <button class="comments__list__item__controls__button"
+          @click="articleStore.approveComment(articleId, comment.id)">Approve</button>
+          <button class="comments__list__item__controls__button"
+          @click="articleStore.rejectComment(articleId, comment.id)">Reject</button>
+        </span>
       </span>
     </section>
     <!-- form to add comments -->
