@@ -16,10 +16,9 @@ const author = userStore.getAuthor(props.article.authorId)
   <RouterLink :to="{name: 'article', params: {id: article.id}}"
   v-for="(article, key) in props"  
     :key="key"
+    class="router-link card"
   > 
-  <article
-    class="card"
-    >
+  <article>
     <header class ="card__header">
       <section class="card__header__title">
         <h2>{{ article.title }}</h2>
