@@ -199,6 +199,22 @@ const handleComment = () => {
         margin-block-start: .5rem;
         margin-inline-start: 2rem;
       }
+      &__button {
+        border: 1px solid #ccc;
+        padding-inline: 1.5rem;
+        padding-block: 0.5rem;
+        cursor: pointer;
+        background-color: #02b;
+        color: #ccc;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+        align-self: flex-end;
+        margin-block-start: .5rem;
+        &:hover {
+          background-color: #ccc;
+          color: #02b;
+        }
+      }
     }
   }//end of comments__list
   &__form {
