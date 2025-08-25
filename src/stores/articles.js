@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import router from '../router'
 import AddArticle from '@/components/AddArticle.vue'
 
 export const useArticlesStore = defineStore('articles', {
@@ -77,11 +78,19 @@ export const useArticlesStore = defineStore('articles', {
     articleById: (state) => (id) => {
       return state.articles.find((article) => article.id == id)
     },
+    getLastId: (state) => {
+      return state.articles[state.articles.length - 1].id
+    }
   },//end getters
   actions: {
     addArticle(newArticle) {
       this.articles.push(newArticle)
       console.log(this.articles)
+    },
+    deleteArticle(id) {
+      this.articles = this.articles.filter((article) => article.id !== id)
+      //sends back to home
+      router.push({name: 'home'})
     }
   }
 })//end defineStore

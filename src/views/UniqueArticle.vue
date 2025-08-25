@@ -52,6 +52,8 @@ const handleComment = () => {
           <p>{{ article.date }}</p>
         </span>
       </section>
+      <button class="card__header__button" v-if="userStore.session"
+      @click="articleStore.deleteArticle(articleId)">Delete article</button>
     </header>
     <p>{{ article.abstract }}</p>
     <img :src="article.banner" />
@@ -94,6 +96,7 @@ const handleComment = () => {
     align-items: center;
     gap: 2rem;
     border-bottom: 1px solid #ccc;
+    flex-wrap: wrap;
     &__intro {
       display: flex;
       gap: 1rem;
@@ -101,6 +104,23 @@ const handleComment = () => {
       &__title {
         flex: 1;
         text-align: center;
+      }
+    }
+    &__button {
+      border: 1px solid #ccc;
+      padding-inline: 1.5rem;
+      padding-block: 0.5rem;
+      cursor: pointer;
+      background-color: #02b;
+      color: #ccc;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease-in-out;
+      width: 100%;
+      padding-block: .3rem;
+      margin-block: 1rem;
+      &:hover {
+        background-color: #ccc;
+        color: #02b;
       }
     }
     &__data {
