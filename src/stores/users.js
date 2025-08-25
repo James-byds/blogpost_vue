@@ -33,7 +33,6 @@ export const useUsersStore = defineStore('users', {
       return user
     },
     getAuthor: (state) => (id) => {
-      console.log("Trying to get user with id", id)
       return state.users.find((user) => user.id === id)
     }
   },

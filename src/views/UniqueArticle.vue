@@ -18,13 +18,6 @@ const articleId = computed(() => Number(route.params.id))
 const article = computed(() => articleStore.articleById(articleId.value))
 //author data
 const author = userStore.getAuthor(article.value.authorId)
-
-//fetch article
-onMounted(() => { 
-  const id = Number(useRoute().params.id)
-  console.log(id)
-  article.value = articleStore.articleById(id)
-})
 </script>
 
 <template>
