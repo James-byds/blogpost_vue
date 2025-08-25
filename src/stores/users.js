@@ -19,6 +19,14 @@ export const useUsersStore = defineStore('users', {
         lastname: "Doe",
         email: '2Hs1H@example.com',
         password: 'password'
+      },
+      {
+        id: 3,
+        pseudo: "Test",
+        firstname: 'Elan',
+        lastname: "Gros",
+        email: '3Hs1H@example.com',
+        password: 'test'
       }
     ],
     currentUser: ref(null),

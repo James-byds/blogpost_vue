@@ -36,8 +36,8 @@ const handleLogout = () => {
   <header class="globalH">
     <p>Header</p>
     <form class="globalH__login" v-if="!userStore.session" @submit.prevent="handleLogin">
-      <input type="text" placeholder="Username" name="login" id="login" />
-      <input type="password" placeholder="Password" name="password" id="password" />
+      <input type="text" placeholder="Test" name="login" id="login" />
+      <input type="password" placeholder="test" name="password" id="password" />
       <button type="submit">Log in</button>
       <p v-if="wrongLogin" class="error">Wrong login or password</p>
     </form>
