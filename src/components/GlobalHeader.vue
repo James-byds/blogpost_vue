@@ -44,8 +44,8 @@ const handleLogout = () => {
     <form class="globalH__login" v-if="!userStore.session" @submit.prevent="handleLogin">
       <fieldset class="globalH__login__fieldset">
         <legend>Log in</legend>
-        <input class="globalH__login__input" type="text" placeholder="Test" v-model.lazy.trim="login"  />
-        <input class="globalH__login__input" type="password" placeholder="test" v-model.lazy.trim="password" />
+        <input class="globalH__login__input" type="text" placeholder="JSM" v-model.lazy.trim="login"  />
+        <input class="globalH__login__input" type="password" placeholder="password" v-model.lazy.trim="password" />
         <p v-if="wrongLogin" class="error">Wrong login or password</p>
       </fieldset>
       <button type="submit" class="globalH__login__button">Log in</button>
