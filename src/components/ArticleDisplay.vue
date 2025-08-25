@@ -1,9 +1,14 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router';
+import { useUsersStore } from '@/stores/users';
+
 const props = defineProps({
   article: Object
 })
+const userStore = useUsersStore()
+
+const author = userStore.getAuthor(props.article.authorId)
 
 </script>
 
@@ -18,7 +23,7 @@ const props = defineProps({
         <p>{{ article.abstract }}</p>
       </section>
       <section class="card__header__data">
-        <p>{{ article.author }}</p>
+        <p>{{ author.lastname }} {{ author.firstname }} </p>
         <p>{{ article.date }}</p>
       </section>
     </header>

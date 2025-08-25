@@ -31,6 +31,10 @@ export const useUsersStore = defineStore('users', {
     loginUser: (state) => (login, password) => {
       const user = state.users.find((user) => user.pseudo === login && user.password === password)
       return user
+    },
+    getAuthor: (state) => (id) => {
+      console.log("Trying to get user with id", id)
+      return state.users.find((user) => user.id === id)
     }
-  }
+  },
 })

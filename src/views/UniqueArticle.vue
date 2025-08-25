@@ -2,15 +2,22 @@
 import { computed, onMounted, ref } from 'vue'
 import {useRoute} from 'vue-router'
 import { useArticlesStore } from '@/stores/articles';
+import { useUsersStore } from '@/stores/users';
 
 //components
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import GlobalHeader from '@/components/GlobalHeader.vue'
 
+//route and stores
 const route = useRoute()
 const articleStore = useArticlesStore()
+const userStore = useUsersStore()
+
+//article data
 const articleId = computed(() => Number(route.params.id))
 const article = computed(() => articleStore.articleById(articleId.value))
+//author data
+const author = userStore.getAuthor(article.value.authorId)
 
 //fetch article
 onMounted(() => { 
@@ -26,7 +33,7 @@ onMounted(() => {
     <header class ="card__header">
       <section class="card__header__title">
         <h2>{{ article.title }}</h2>
-        <p>{{ article.author }}</p>
+        <p>{{ author.lastname }} {{ author.firstname }}</p>
       </section>
       <section class="card__header__data">
         <p>{{ article.abstract }}</p>
