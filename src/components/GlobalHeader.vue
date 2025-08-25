@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router';
 
 //stores 
 import { useUsersStore } from '@/stores/users'
@@ -35,16 +36,21 @@ const handleLogout = () => {
 <template>
   <header class="globalH">
     <p class="globalH__slogan">Your weekly source of dissapointment</p>
-    <h3 class="globalH__title">The occasional truth</h3>
+    <RouterLink to="/" class="globalH__title">
+      <h3>The occasional truth</h3>
+    </RouterLink>
     <form class="globalH__login" v-if="!userStore.session" @submit.prevent="handleLogin">
-      <input class="globalH__login__input" type="text" placeholder="Test" name="login" id="login" />
-      <input class="globalH__login__input" type="password" placeholder="test" name="password" id="password" />
+      <fieldset>
+        <legend>Log in</legend>
+        <input class="globalH__login__input" type="text" placeholder="Test" name="login" id="login" />
+        <input class="globalH__login__input" type="password" placeholder="test" name="password" id="password" />
+        <p v-if="wrongLogin" class="error">Wrong login or password</p>
+      </fieldset>
       <button type="submit" class="globalH__login__button">Log in</button>
-      <p v-if="wrongLogin" class="error">Wrong login or password</p>
     </form>
     <p v-else>
       Logged in as {{ userStore.currentUser.pseudo }}
-      <button @click="handleLogout">Log out</button>
+      <button @click="handleLogout" class="globalH__login__button">Log out</button>
     </p>
   </header>
 </template>
@@ -53,9 +59,11 @@ const handleLogout = () => {
   .globalH {
     display: flex;
     gap: 2rem;
-    margin: 2rem auto;
+    margin-block-end: 2rem;
+    
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
+    background-color: #ddd;
     &__title {
       text-align: center;
       font-size: 2rem;
@@ -65,6 +73,11 @@ const handleLogout = () => {
       text-shadow: 2px 2px 2px #ccc;
       flex: 3;
       text-decoration: underline;
+      color: #222;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        color: #02b;
+      }
     }
     &__slogan {
       flex: 1;
@@ -77,6 +90,7 @@ const handleLogout = () => {
       align-items: center;
       justify-content: center;
       gap: 2rem;
+      margin-inline: .5rem;
       &__input {
         border: 1px solid #ccc;
         padding: 0.5rem;
@@ -99,5 +113,6 @@ const handleLogout = () => {
   }
   .error {
     color: red;
+    text-align: center;
   }
 </style>
