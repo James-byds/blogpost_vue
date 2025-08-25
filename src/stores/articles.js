@@ -59,6 +59,15 @@ export const useArticlesStore = defineStore('articles', {
           }
         ]
       },
+      {
+        id: 4,
+        thumbnail: "http://unsplash.it/350/200?random",
+        banner: "http://unsplash.it/800/200?random",
+        title: 'Article 4',
+        authorId: 2,
+        abstract: 'strip talk too cattle planned choose broken first policeman',
+        date: '9/3/2081',
+      },
     ],
   }),//end state
   getters: {

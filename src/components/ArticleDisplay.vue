@@ -43,7 +43,14 @@ const author = userStore.getAuthor(props.article.authorId)
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1 1 300px;
     transition: all 0.3s ease-in-out;
+    //flex properties
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    min-width: 320px;
+    max-width: 800px;
     &__header {//article header
+      margin-block-start: .5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
