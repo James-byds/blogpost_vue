@@ -18,6 +18,21 @@ const articleId = computed(() => Number(route.params.id))
 const article = computed(() => articleStore.articleById(articleId.value))
 //author data
 const author = userStore.getAuthor(article.value.authorId)
+//comment data
+const comment = ref(null)
+
+//methods
+const handleComment = () => {
+  console.log(comment.value)
+  const commentor = userStore.session ? userStore.currentUser.pseudo : 'Anonymous'
+  const newComment = {
+    id: article.value.comments.length + 1,
+    author: commentor,
+    date: new Date().toLocaleDateString('fr'),
+    content: comment.value
+  }
+  article.value.comments.push(newComment)
+}
 </script>
 
 <template>
@@ -42,6 +57,11 @@ const author = userStore.getAuthor(article.value.authorId)
       <p>{{ comment.author }} on {{ comment.date }} </p>
        <p>{{ comment.content }} </p>
     </span>
+    <form action="" @submit.prevent="handleComment">
+      <label for="comment">Comment</label>
+      <input type="text" name="comment" v-model.lazy.trim="comment" />
+      <button type="submit">Submit</button>
+    </form>
   </section>
   <GlobalFooter />
 </template>
