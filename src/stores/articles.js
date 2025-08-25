@@ -85,9 +85,13 @@ export const useArticlesStore = defineStore('articles', {
     },
     approvedComments: (state) => (id) => {
       return state.articles.find((article) => article.id == id).comments.filter((comment) => comment.state === 'approved')
-    }
+    },
+    pendingComments: (state) => (id) => {
+      return state.articles.find((article) => article.id == id).comments.filter((comment) => comment.state === 'pending')
+    },
   },//end getters
   actions: {
+    //articles actions
     addArticle(newArticle) {
       this.articles.push(newArticle)
       console.log(this.articles)
@@ -105,6 +109,7 @@ export const useArticlesStore = defineStore('articles', {
         return article
       })
     },
+    //comments actions
     deleteComment(articleId, commentId) {
       const articleIndex = this.articles.findIndex((article) => article.id === articleId)
       this.articles[articleIndex].comments = this.articles[articleIndex].comments.filter((comment) => comment.id !== commentId)

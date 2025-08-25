@@ -21,6 +21,8 @@ const edit=ref(false)
 const author = userStore.getAuthor(article.value.authorId)
 //comment data
 const comment = ref(null)
+const approvedComments = computed(() => articleStore.approvedComments(articleId.value))
+const pendingComments = computed(() => articleStore.pendingComments(articleId.value))
 
 //methods
 const handleComment = () => {
@@ -82,13 +84,20 @@ const handleComment = () => {
   <section class="comments">
     <p>Comments</p>
     <section class="comments__list">
-      <span v-for="comment in article.comments" :key="comment.id"
+      <span v-for="comment in approvedComments" :key="comment.id"
       class="comments__list__item" >
         <p class="comments__list__item__author">{{ comment.author }} </p>
         <p class="comments__list__item__date">on {{ comment.date }} </p>
         <p class="comments__list__item__content">{{ comment.content }} </p>
         <button class="comments__list__item__button" v-if="userStore.session"
         @click="articleStore.deleteComment(articleId, comment.id)">Delete</button>
+      </span>
+      <!--End of approved comments-->
+      <span v-for="comment in pendingComments" :key="comment.id"
+      class="comments__list__item" v-if="userStore.session">
+        <p class="comments__list__item__author">{{ comment.author }} </p>
+        <p class="comments__list__item__date">on {{ comment.date }} </p>
+        <p class="comments__list__item__content">{{ comment.content }} </p>
         <span class="comments__list__item__controls" v-if="userStore.session && comment.state === 'pending'">
           <button class="comments__list__item__controls__button"
           @click="articleStore.approveComment(articleId, comment.id)">Approve</button>
