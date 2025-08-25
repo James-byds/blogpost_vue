@@ -99,9 +99,9 @@ const handleComment = () => {
         <p class="comments__list__item__date">on {{ comment.date }} </p>
         <p class="comments__list__item__content">{{ comment.content }} </p>
         <span class="comments__list__item__controls" v-if="userStore.session && comment.state === 'pending'">
-          <button class="comments__list__item__controls__button"
+          <button class="comments__list__item__button"
           @click="articleStore.approveComment(articleId, comment.id)">Approve</button>
-          <button class="comments__list__item__controls__button"
+          <button class="comments__list__item__button"
           @click="articleStore.rejectComment(articleId, comment.id)">Reject</button>
         </span>
       </span>
