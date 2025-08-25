@@ -34,11 +34,12 @@ const handleLogout = () => {
 
 <template>
   <header class="globalH">
-    <p>Header</p>
+    <p class="globalH__slogan">Your weekly source of dissapointment</p>
+    <h3 class="globalH__title">The occasional truth</h3>
     <form class="globalH__login" v-if="!userStore.session" @submit.prevent="handleLogin">
-      <input type="text" placeholder="Test" name="login" id="login" />
-      <input type="password" placeholder="test" name="password" id="password" />
-      <button type="submit">Log in</button>
+      <input class="globalH__login__input" type="text" placeholder="Test" name="login" id="login" />
+      <input class="globalH__login__input" type="password" placeholder="test" name="password" id="password" />
+      <button type="submit" class="globalH__login__button">Log in</button>
       <p v-if="wrongLogin" class="error">Wrong login or password</p>
     </form>
     <p v-else>
@@ -55,11 +56,45 @@ const handleLogout = () => {
     margin: 2rem auto;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
+    &__title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5rem;
+      text-shadow: 2px 2px 2px #ccc;
+      flex: 3;
+      text-decoration: underline;
+    }
+    &__slogan {
+      flex: 1;
+      text-align: center;
+      letter-spacing: 0.5rem;
+      text-shadow: 2px 2px 2px #ccc;
+    }
     &__login {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 2rem;
+      &__input {
+        border: 1px solid #ccc;
+        padding: 0.5rem;
+      }
+      &__button {
+        border: 1px solid #ccc;
+        padding-inline: 1.5rem;
+        padding-block: 0.5rem;
+        cursor: pointer;
+        background-color: #02b;
+        color: #ccc;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: #ccc;
+          color: #02b;
+        }
+      }
     }
   }
   .error {
