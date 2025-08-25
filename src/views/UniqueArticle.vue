@@ -61,9 +61,11 @@ const handleComment = () => {
   <section class="comments">
     <p>Comments</p>
     <section class="comments__list">
-      <span v-for="comment in article.comments" :key="comment.id">
-        <p>{{ comment.author }} on {{ comment.date }} </p>
-         <p>{{ comment.content }} </p>
+      <span v-for="comment in article.comments" :key="comment.id"
+      class="comments__list__item">
+        <p class="comments__list__item__author">{{ comment.author }} </p>
+        <p class="comments__list__item__date">on {{ comment.date }} </p>
+        <p class="comments__list__item__content">{{ comment.content }} </p>
       </span>
     </section>
     <form action="" @submit.prevent="handleComment">
@@ -112,11 +114,39 @@ const handleComment = () => {
   gap: .2rem;
   margin: 2rem auto;
   padding: 2rem;
+  max-width: 80vw;
+  min-width: 320px;
   &__list {
     display: flex;
     flex-direction: column;
     gap: .2rem;
     align-items: flex-start;
+    &__item {
+      &__author {
+        width: 100%;
+        text-align: left;
+        margin: 0;
+      }
+      &__date {
+        width: 100%;
+        text-align: left;
+        margin:0;
+        margin-inline-start: 2rem;
+        text-transform: lowercase;
+        font-style: italic;
+        color: #888;
+      }
+      &__content {
+        border: 1px solid #ccc;
+        padding: .5rem;
+        border-radius: .5rem;
+        background-color: #ddd;
+        width: 100%;
+        text-align: left;
+        margin-block-start: .5rem;
+        margin-inline-start: 2rem;
+      }
+    }
   }
 }
 </style>
