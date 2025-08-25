@@ -2,17 +2,18 @@
 </script>
 
 <template>
-  <footer class="footer">
-    <p>Footer</p>
-    <p>Copyright 2023</p>
+  <footer class="globalF">
+    <p class="globalF__text">ScamNews INC.</p>
+    <p class="globalF__text">All rights reserved</p>
+    <p class="globalF__text">Copyright 2025</p>
   </footer>
 </template>
 
 <style scoped lang="scss">
-  .footer {
+  .globalF {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 2rem;
     margin: 2rem auto;
     border-top: 1px solid #ccc;
@@ -21,7 +22,16 @@
     color: #ccc;
     position: relative;
     bottom: 0;
-    left: 0;
-    right: 0;
+    &__text {
+      &:first-child {
+        margin-inline-start: 1.2rem;
+      }
+      &:last-child {
+        margin-inline-end: 1.2rem;
+      }
+      text-align: center;
+      font-size: 1rem;
+      text-shadow: 1px 1px 1px #ccc;
+    }
   }
 </style>
