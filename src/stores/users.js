@@ -22,7 +22,7 @@ export const useUsersStore = defineStore('users', {
       },
       {
         id: 3,
-        pseudo: "Test",
+        pseudo: "XxgroselanxX",
         firstname: 'Elan',
         lastname: "Gros",
         email: '3Hs1H@example.com',

@@ -26,9 +26,9 @@ const author = userStore.getAuthor(props.article.authorId)
         <p>{{ article.date }}</p>
       </section>
     </header>
-    <img :src="article.thumbnail" />
+    <img :src="article.thumbnail" class="card__thumbnail"/>
     <p>{{ article.abstract }}</p>
-    <RouterLink :to="{name: 'article', params: {id: article.id}}">Read more</RouterLink>
+    <RouterLink :to="{name: 'article', params: {id: article.id}}" class="card__link hoverable">Read more</RouterLink>
   </article>
 </template>
 
@@ -36,17 +36,17 @@ const author = userStore.getAuthor(props.article.authorId)
   .card {
     border: 1px solid #ccc;
     border-radius: 4px;
-    padding: 1rem;
     margin: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1 1 300px;
-    &__header {
+    transition: all 0.3s ease-in-out;
+    &__header {//article header
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1rem;
+      margin-inline: 1rem;
       &__title {
-        flex: 1;
+        flex: 2;
         margin-right: 1rem;
         text-align: right;
       }
@@ -54,7 +54,36 @@ const author = userStore.getAuthor(props.article.authorId)
         flex: 1;
         flex-grow: 1;
         text-align: right;
+        border-inline-start: #ccc 1px solid;
       }
     }
+    &__thumbnail {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-block-end: 1rem;
+    }
+    &__link {
+      display: block;
+      text-align: center;
+      background-color: #ccc;
+      color: #02b;
+      padding: 0.5rem;
+      margin: 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+    //end of normal
+    //hover
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      .hoverable {
+        background-color: #02b;
+        color: #ccc;
+      }
+    }
+    //end of hover
   }
 </style>

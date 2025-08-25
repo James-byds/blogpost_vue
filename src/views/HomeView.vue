@@ -21,7 +21,8 @@ import AddArticle from '@/components/AddArticle.vue'
   <GlobalHeader />
   <main class="container">
     <ArticleDisplay v-for="article in articleStore.allArticles"
-   :key="article.id" :article="article" />
+   :key="article.id" :article="article" 
+   class="container__article"/>
   </main>
   <AddArticle v-if="userStore.session"/>
   <GlobalFooter />
@@ -35,5 +36,8 @@ import AddArticle from '@/components/AddArticle.vue'
     justify-content: center;
     gap: 2rem;
     margin: 2rem auto;
+    &__article {
+      flex: 1 1 20rem;
+    }
   }
 </style>
