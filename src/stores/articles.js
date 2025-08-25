@@ -89,6 +89,14 @@ export const useArticlesStore = defineStore('articles', {
       this.articles = this.articles.filter((article) => article.id !== id)
       //sends back to home
       router.push({name: 'home'})
+    },
+    updateArticle(editedArticle) {
+      this.articles = this.articles.map((article) => {
+        if (article.id === editedArticle.id) {
+          return editedArticle
+        }
+        return article
+      })
     }
   }
 })//end defineStore

@@ -63,13 +63,14 @@ const handleComment = () => {
         v-show="!edit">Edit article</button>
         <!-- boutons de sauvegarde et annulation -->
         <button class="card__header__controls__button"
-        @click.prevent="articleStore.updateArticle(article)"
+        @click.prevent="articleStore.updateArticle(article), edit = !edit"
         v-show="edit">Save article</button>
         <button class="card__header__controls__button"
         @click.prevent="edit = !edit"
         v-show="edit">Cancel</button>
       </div>
     </header>
+    <!-- abstract and content -->
     <p v-show="!edit">{{ article.abstract }}</p>
     <input v-show="edit" type="text" v-model="article.abstract" />
     <img :src="article.banner" />
@@ -87,6 +88,7 @@ const handleComment = () => {
         <p class="comments__list__item__content">{{ comment.content }} </p>
       </span>
     </section>
+    <!-- form to add comments -->
     <form action="" @submit.prevent="handleComment" class="comments__form">
       <fieldset class="comments__form__fieldset">
         <legend>Leave a comment</legend>
