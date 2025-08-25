@@ -40,7 +40,7 @@ const handleLogout = () => {
       <h3>The occasional truth</h3>
     </RouterLink>
     <form class="globalH__login" v-if="!userStore.session" @submit.prevent="handleLogin">
-      <fieldset>
+      <fieldset class="globalH__login__fieldset">
         <legend>Log in</legend>
         <input class="globalH__login__input" type="text" placeholder="Test" name="login" id="login" />
         <input class="globalH__login__input" type="password" placeholder="test" name="password" id="password" />
@@ -60,9 +60,9 @@ const handleLogout = () => {
     display: flex;
     gap: 2rem;
     margin-block-end: 2rem;
-    
+    border-block-end: 2px solid #222;
+    padding-block: 1rem;
     justify-content: space-between;
-    border-bottom: 1px solid #ccc;
     background-color: #ddd;
     &__title {
       text-align: center;
@@ -81,9 +81,13 @@ const handleLogout = () => {
     }
     &__slogan {
       flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       letter-spacing: 0.5rem;
       text-shadow: 2px 2px 2px #ccc;
+      border-inline-end: 1px solid #222;
     }
     &__login {
       display: flex;
@@ -91,6 +95,12 @@ const handleLogout = () => {
       justify-content: center;
       gap: 2rem;
       margin-inline: .5rem;
+      &__fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-block: 0.5rem;
+      }
       &__input {
         border: 1px solid #ccc;
         padding: 0.5rem;
