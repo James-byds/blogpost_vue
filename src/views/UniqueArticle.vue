@@ -52,8 +52,12 @@ const handleComment = () => {
           <p>{{ article.date }}</p>
         </span>
       </section>
-      <button class="card__header__button" v-if="userStore.session"
-      @click="articleStore.deleteArticle(articleId)">Delete article</button>
+      <div class="card__header__controls" v-if="userStore.session">
+        <button class="card__header__controls__button"
+        @click="articleStore.deleteArticle(articleId)">Delete article</button>
+        <button class="card__header__controls__button"
+        @click.prevent="">Edit article</button>
+      </div>
     </header>
     <p>{{ article.abstract }}</p>
     <img :src="article.banner" />
@@ -106,21 +110,26 @@ const handleComment = () => {
         text-align: center;
       }
     }
-    &__button {
-      border: 1px solid #ccc;
-      padding-inline: 1.5rem;
-      padding-block: 0.5rem;
-      cursor: pointer;
-      background-color: #02b;
-      color: #ccc;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease-in-out;
+    &__controls {
       width: 100%;
-      padding-block: .3rem;
       margin-block: 1rem;
-      &:hover {
-        background-color: #ccc;
-        color: #02b;
+      gap: 2rem;
+      display: flex;
+      justify-content: flex-end;
+      &__button {
+        padding-block: .3rem;
+        border: 1px solid #ccc;
+        padding-inline: 1.5rem;
+        padding-block: 0.5rem;
+        cursor: pointer;
+        background-color: #02b;
+        color: #ccc;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: #ccc;
+          color: #02b;
+        }
       }
     }
     &__data {
