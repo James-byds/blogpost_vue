@@ -20,7 +20,6 @@ const author = userStore.getAuthor(props.article.authorId)
     <header class ="card__header">
       <section class="card__header__title">
         <h2>{{ article.title }}</h2>
-        <p>{{ article.abstract }}</p>
       </section>
       <section class="card__header__data">
         <p>{{ author.lastname }} {{ author.firstname }} </p>
@@ -28,7 +27,7 @@ const author = userStore.getAuthor(props.article.authorId)
       </section>
     </header>
     <img :src="article.thumbnail" />
-    <p>{{ article.content }}</p>
+    <p>{{ article.abstract }}</p>
     <RouterLink :to="{name: 'article', params: {id: article.id}}">Read more</RouterLink>
   </article>
 </template>
@@ -47,11 +46,13 @@ const author = userStore.getAuthor(props.article.authorId)
       justify-content: space-between;
       margin-bottom: 1rem;
       &__title {
-        flex: 2;
+        flex: 1;
         margin-right: 1rem;
+        text-align: right;
       }
       &__data {
         flex: 1;
+        flex-grow: 1;
         text-align: right;
       }
     }
