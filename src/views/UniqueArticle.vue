@@ -39,24 +39,33 @@ const handleComment = () => {
   <GlobalHeader />
   <article class="card">
     <header class ="card__header">
-      <section class="card__header__title">
-        <h2>{{ article.title }}</h2>
-        <p>{{ author.lastname }} {{ author.firstname }}</p>
+      <section class="card__header__intro">
+        <span>
+          By
+          <p>{{ author.lastname }} {{ author.firstname }}</p>
+        </span>
+        <h2 class="card__header__intro__title">{{ article.title }}</h2>
       </section>
       <section class="card__header__data">
-        <p>{{ article.abstract }}</p>
+        <span>
+          Published on
+          <p>{{ article.date }}</p>
+        </span>
       </section>
     </header>
-    <p>{{ article.date }}</p>
+    <p>{{ article.abstract }}</p>
     <img :src="article.banner" />
     <p>{{ article.content }}</p>
   </article>
-  <section class="card__comments">
+  <!-- comments -->
+  <section class="comments">
     <p>Comments</p>
-    <span v-for="comment in article.comments" :key="comment.id">
-      <p>{{ comment.author }} on {{ comment.date }} </p>
-       <p>{{ comment.content }} </p>
-    </span>
+    <section class="comments__list">
+      <span v-for="comment in article.comments" :key="comment.id">
+        <p>{{ comment.author }} on {{ comment.date }} </p>
+         <p>{{ comment.content }} </p>
+      </span>
+    </section>
     <form action="" @submit.prevent="handleComment">
       <label for="comment">Comment</label>
       <input type="text" name="comment" v-model.lazy.trim="comment" />
@@ -79,15 +88,35 @@ const handleComment = () => {
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    &__title {
+    border-bottom: 1px solid #ccc;
+    &__intro {
       display: flex;
       gap: 1rem;
+      flex: 2;
+      &__title {
+        flex: 1;
+        text-align: center;
+      }
     }
     &__data {
       display: flex;
       justify-self: flex-end;
       gap: 1rem;
     }
+  }
+}//end of card
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    align-items: flex-start;
   }
 }
 </style>

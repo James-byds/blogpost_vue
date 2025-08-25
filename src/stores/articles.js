@@ -53,7 +53,7 @@ export const useArticlesStore = defineStore('articles', {
         comments: [
           {
             id: 1,
-            author: 'John Doe',
+            author: 'JSM',
             content: 'This is a comment',
             date: '12/1/2022'
           }
