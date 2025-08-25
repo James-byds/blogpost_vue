@@ -40,6 +40,7 @@ const author = userStore.getAuthor(props.article.authorId)
     padding: 1rem;
     margin: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px;
     &__header {
       display: flex;
       align-items: center;

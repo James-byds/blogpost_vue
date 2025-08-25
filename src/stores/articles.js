@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import AddArticle from '@/components/AddArticle.vue'
 
 export const useArticlesStore = defineStore('articles', {
   state: () => ({
@@ -59,7 +60,7 @@ export const useArticlesStore = defineStore('articles', {
         ]
       },
     ],
-  }),
+  }),//end state
   getters: {
     allArticles: (state) => {
       return state.articles
@@ -67,5 +68,11 @@ export const useArticlesStore = defineStore('articles', {
     articleById: (state) => (id) => {
       return state.articles.find((article) => article.id == id)
     },
-  },
-})
+  },//end getters
+  actions: {
+    addArticle(newArticle) {
+      this.articles.push(newArticle)
+      console.log(this.articles)
+    }
+  }
+})//end defineStore
