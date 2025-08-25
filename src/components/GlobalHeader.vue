@@ -6,6 +6,7 @@ import { useUsersStore } from '@/stores/users'
 const userStore = useUsersStore()
 
 //refs
+const user = ref(null)
 const wrongLogin = ref(false);
 
 //methods 
@@ -13,7 +14,7 @@ const handleLogin = () => {
   console.log("logging in", login.value, password.value)
   user.value = userStore.loginUser(login.value, password.value)
   if (user.value === undefined) {
-    session.value = false
+    console.log("wrong login or password")
     wrongLogin.value = true
     return
   }
@@ -22,7 +23,7 @@ const handleLogin = () => {
     userStore.session = true
     console.log("user logged in", userStore.currentUser)
   }
-  console.log(user.value.name)
+  console.log(user.value.pseudo)
 }
 
 const handleLogout = () => {
@@ -41,7 +42,7 @@ const handleLogout = () => {
       <p v-if="wrongLogin" class="error">Wrong login or password</p>
     </form>
     <p v-else>
-      Logged in as {{ userStore.currentUser.name }}
+      Logged in as {{ userStore.currentUser.pseudo }}
       <button @click="handleLogout">Log out</button>
     </p>
   </header>

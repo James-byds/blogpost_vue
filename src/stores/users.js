@@ -6,13 +6,17 @@ export const useUsersStore = defineStore('users', {
     users: [
       {
         id: 1,
-        name: 'John',
+        pseudo: "JSM",
+        firstname: 'John',
+        lastname: "Smith",
         email: '1Hs1H@example.com',
         password: 'password'
       },
       {
         id: 2,
-        name: 'Jane',
+        pseudo: "JDO",
+        firstname: 'Jane',
+        lastname: "Doe",
         email: '2Hs1H@example.com',
         password: 'password'
       }
@@ -25,7 +29,7 @@ export const useUsersStore = defineStore('users', {
       return state.users
     },
     loginUser: (state) => (login, password) => {
-      const user = state.users.find((user) => user.name === login)
+      const user = state.users.find((user) => user.pseudo === login && user.password === password)
       return user
     }
   }
