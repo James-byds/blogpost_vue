@@ -13,8 +13,11 @@ const author = userStore.getAuthor(props.article.authorId)
 </script>
 
 <template>
-  <article v-for="(article, key) in props"  
+  <RouterLink :to="{name: 'article', params: {id: article.id}}"
+  v-for="(article, key) in props"  
     :key="key"
+  > 
+  <article
     class="card"
     >
     <header class ="card__header">
@@ -28,8 +31,9 @@ const author = userStore.getAuthor(props.article.authorId)
     </header>
     <img :src="article.thumbnail" class="card__thumbnail"/>
     <p>{{ article.abstract }}</p>
-    <RouterLink :to="{name: 'article', params: {id: article.id}}" class="card__link hoverable">Read more</RouterLink>
+    <button class="card__link hoverable">Read more</button>
   </article>
+  </RouterLink>
 </template>
 
 <style scoped lang="scss">
