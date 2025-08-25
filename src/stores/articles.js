@@ -108,6 +108,24 @@ export const useArticlesStore = defineStore('articles', {
     deleteComment(articleId, commentId) {
       const articleIndex = this.articles.findIndex((article) => article.id === articleId)
       this.articles[articleIndex].comments = this.articles[articleIndex].comments.filter((comment) => comment.id !== commentId)
+    },
+    approveComment(articleId, commentId) {
+      const articleIndex = this.articles.findIndex((article) => article.id === articleId)
+      this.articles[articleIndex].comments = this.articles[articleIndex].comments.map((comment) => {
+        if (comment.id === commentId) {
+          comment.state = 'approved'
+        }
+        return comment
+      })
+    },
+    rejectComment(articleId, commentId) {
+      const articleIndex = this.articles.findIndex((article) => article.id === articleId)
+      this.articles[articleIndex].comments = this.articles[articleIndex].comments.map((comment) => {
+        if (comment.id === commentId) {
+          comment.state = 'rejected'
+        }
+        return comment
+      })
     }
   }
 })//end defineStore
